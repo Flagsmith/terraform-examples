@@ -33,7 +33,7 @@ cd examples/flagsmith-on-eks
 terraform apply
 ```
 
-Terraform will ask for two inputs:
+Terraform will ask for one input:
 
 - **`var.cluster_name`**: the name of the EKS cluster Flagsmith gets deployed to. Note that your AWS CLI/provider should be configured with the cluster's region set as default.
 
