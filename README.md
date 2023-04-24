@@ -11,6 +11,14 @@ The following prerequisites are expected to apply this example configuration suc
 
 ### Usage
 
+If you don't have a running EKS cluster yet, you can provision it with Terraform using the official Terraform EKS example:
+
+```bash
+git clone https://github.com/hashicorp/learn-terraform-provision-eks-cluster.git
+cd learn-terraform-provision-eks-cluster
+terraform apply
+```
+
 Clone this repository:
 
 ```bash
