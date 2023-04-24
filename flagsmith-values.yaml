@@ -1,0 +1,8 @@
+influxdb2:
+  enabled: false
+
+service:
+  frontend:
+    type: LoadBalancer
+  api:
+    type: LoadBalancer

@@ -1,0 +1,9 @@
+postgresql:
+  enabled: false
+
+databaseExternal:
+  enabled: true
+  urlFromExistingSecret:
+    enabled: true
+    name: flagsmith-db
+    key: url
