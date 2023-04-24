@@ -55,3 +55,20 @@ Flagsmith's endpoints are exposed in `LoadBalancer` mode.
 ```
 
 line in the `aws_db_instance` configuration.
+
+### Outputs
+
+After successfull `terraform apply` you will see these outputs:
+
+- **`flagsmith_api_endpoint`**:  This URL should be provided to your SDKs. (Read more on configuring the Flagsmith SDKs)[https://docs.flagsmith.com/clients/server-side#configuring-the-sdk].
+- **`flagsmith_frontend_endpoint`**: Flagsmith's UI is accesible via this endpoint.
+
+### Access the UI endpoint locally
+
+```bash
+kubectl port-forward svc/flagsmith-frontend 8080:8080
+```
+
+Navigate to your newly deployed Flagsmith: http://localhost:8080
+
+Have fun!
