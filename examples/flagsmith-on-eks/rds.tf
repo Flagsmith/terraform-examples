@@ -40,6 +40,11 @@ resource "aws_db_parameter_group" "flagsmith_db" {
   }
 }
 
+resource "random_password" "flagsmith_db_password" {
+  length  = 32
+  special = true
+}
+
 resource "aws_db_instance" "flagsmith_db" {
   identifier             = "flagsmith-db"
   instance_class         = "db.t3.micro"
@@ -48,7 +53,7 @@ resource "aws_db_instance" "flagsmith_db" {
   engine                 = "postgres"
   engine_version         = "12.14"
   username               = "flagsmith"
-  password               = var.db_password
+  password               = random_password.flagsmith_db_password.result
   db_subnet_group_name   = aws_db_subnet_group.rds.name
   vpc_security_group_ids = [aws_security_group.rds.id]
   parameter_group_name   = aws_db_parameter_group.flagsmith_db.name

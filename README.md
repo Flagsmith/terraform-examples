@@ -28,7 +28,6 @@ terraform apply
 Terraform will ask for two inputs:
 
 - **`var.cluster_name`**: the name of the EKS cluster Flagsmith gets deployed to. Note that your AWS CLI/provider should be configured with the cluster's region set as default.
-- **`var.db_password`**: this will be the password for the Flagsmith's RDS instance.
 
 ### Resources
 

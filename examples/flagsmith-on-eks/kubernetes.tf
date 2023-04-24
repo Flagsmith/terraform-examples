@@ -15,7 +15,7 @@ resource "kubernetes_secret" "flagsmith_db" {
 
   data = {
     url = join("", [
-      "postgresql://${aws_db_instance.flagsmith_db.username}:${var.db_password}",
+      "postgresql://${aws_db_instance.flagsmith_db.username}:${random_password.flagsmith_db_password.result}",
       "@${aws_db_instance.flagsmith_db.address}:${aws_db_instance.flagsmith_db.port}",
       "/${aws_db_instance.flagsmith_db.db_name}"
     ])
