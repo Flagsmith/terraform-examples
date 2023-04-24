@@ -46,7 +46,7 @@ resource "aws_db_instance" "flagsmith_db" {
   allocated_storage      = 5
   db_name                = "flagsmith"
   engine                 = "postgres"
-  engine_version         = "11.12"
+  engine_version         = "12.14"
   username               = "flagsmith"
   password               = var.db_password
   db_subnet_group_name   = aws_db_subnet_group.rds.name
