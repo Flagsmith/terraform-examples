@@ -1,0 +1,24 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ecs:*",
+        "elasticloadbalancing:Describe*",
+        "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
+        "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+        "elasticloadbalancing:RegisterTargets",
+        "elasticloadbalancing:DeregisterTargets",
+        "cloudwatch:*",
+        "s3:*",
+        "rds:*",
+        "logs:*",
+        "elasticache:*",
+        "secretsmanager:*",
+        "ssm:*"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
