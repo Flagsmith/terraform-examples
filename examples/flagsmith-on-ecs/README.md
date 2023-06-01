@@ -29,7 +29,7 @@ AWS infrastructure consists of:
 2. Generate certificate with AWS Certificate Manager \
   with ```*.yourdomain.com``` pattern
 ![Certificate](img/AWS_certificate_manager.png)
-3. Define your variables like certificate arn, hosted zone domain and desired settings in **terraform.tfvars** file 
+3. Define your variables such as certificate arn, hosted zone domain, and other desired settings in **terraform.tfvars** file 
     ```bash
     route53_hosted_zone = "yourdomain.com"
     certificate_arn = "arn:aws:acm:"
