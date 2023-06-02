@@ -3,16 +3,16 @@ data "aws_kms_key" "ssm_kms_key" {
 }
 
 resource "random_password" "rds_password" {
-  count = var.rds_password == "" ? 1 : 0
-  length = 15
-  special = true
+  count            = var.rds_password == "" ? 1 : 0
+  length           = 15
+  special          = true
   override_special = "#%!&"
 }
 
 resource "random_password" "django_secret_key" {
-  count = var.django_secret_key == "" ? 1 : 0
-  length = 25
-  special = true
+  count            = var.django_secret_key == "" ? 1 : 0
+  length           = 25
+  special          = true
   override_special = "#%!&"
 }
 

@@ -10,7 +10,7 @@ resource "aws_iam_role_policy" "ecs-host-role-policy" {
 }
 
 resource "aws_iam_role" "ecs_task" {
-  name = "${var.app_name}-ecs-task"
+  name               = "${var.app_name}-ecs-task"
   assume_role_policy = file("policies/ecs-host-role.json")
 }
 

@@ -9,10 +9,10 @@ resource "aws_lb" "production" {
 
 # Target group
 resource "aws_alb_target_group" "default-target-group" {
-  name     = "${var.app_environment}-${var.app_name}-tg"
-  port     = 8000
-  protocol = "HTTP"
-  vpc_id   = module.vpc.vpc_id
+  name        = "${var.app_environment}-${var.app_name}-tg"
+  port        = 8000
+  protocol    = "HTTP"
+  vpc_id      = module.vpc.vpc_id
   target_type = "ip"
 
   health_check {

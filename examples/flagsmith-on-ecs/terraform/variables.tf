@@ -74,7 +74,7 @@ variable "rds_username" {
 
 variable "rds_password" {
   description = "RDS database password"
-  default = ""
+  default     = ""
 }
 
 variable "rds_instance_class" {
@@ -90,14 +90,14 @@ variable "certificate_arn" {
 }
 
 variable "route53_hosted_zone" {
-  type    = string
+  type = string
 }
 
 # Django
 
 variable "django_secret_key" {
   description = "Django env. variable DJANGO_SECRET_KEY"
-  default = ""
+  default     = ""
 }
 
 variable "cpu" {
