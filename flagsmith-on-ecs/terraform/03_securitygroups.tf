@@ -4,6 +4,7 @@ resource "aws_security_group" "load-balancer" {
   description = "Controls access to the ALB"
   vpc_id      = module.vpc.vpc_id
 
+  # used for redirection to https
   ingress {
     from_port   = 80
     to_port     = 80

@@ -1,4 +1,4 @@
-# Production VPC
+# POC VPC
 
 data "aws_availability_zones" "available" {
   state = "available"

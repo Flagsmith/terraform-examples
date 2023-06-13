@@ -1,23 +1,17 @@
-data "template_file" "app" {
-  template = file("templates/flagsmith.json")
-
-  vars = {
+resource "aws_ecs_task_definition" "app" {
+  family = "flagsmith"
+  container_definitions = templatefile("templates/flagsmith.json", {
     container_name   = var.app_name
     docker_image_url = var.docker_image_url
     region           = var.region
 
     allowed_hosts   = var.allowed_hosts
-    settings_module = lookup(var.settings_module, "production")
+    settings_module = lookup(var.settings_module, "dev")
     AWS_ACCOUNT_ID  = local.AWS_ACCOUNT_ID
     app_environment = var.app_environment
     app_name        = var.app_name
-  }
-}
-
-resource "aws_ecs_task_definition" "app" {
-  family                   = "flagsmith"
-  container_definitions    = data.template_file.app.rendered
-  depends_on               = [aws_db_instance.production]
+  })
+  depends_on               = [aws_db_instance.postgres]
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
   cpu                      = var.cpu
@@ -27,9 +21,9 @@ resource "aws_ecs_task_definition" "app" {
 
 }
 
-resource "aws_ecs_service" "production" {
+resource "aws_ecs_service" "flagsmith-svc" {
   name            = "${local.ecs_cluster_name}-service"
-  cluster         = aws_ecs_cluster.production.id
+  cluster         = aws_ecs_cluster.flagsmith.id
   task_definition = aws_ecs_task_definition.app.arn
   desired_count   = var.app_count
   ## prevent race condition - iam

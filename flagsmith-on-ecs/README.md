@@ -2,7 +2,10 @@
 
 ## Deploying Flagsmith to AWS ECS (with whitenoise)
 
-AWS infrastructure consists of:
+### This is an example, how can Flagsmith can be hosted, 
+### This is not production ready solution
+
+## AWS infrastructure consists of:
 - IAM
 - Route53 subdomain
 - Networking:
@@ -29,10 +32,9 @@ AWS infrastructure consists of:
 2. Generate certificate with AWS Certificate Manager \
   with ```*.yourdomain.com``` pattern
 ![Certificate](img/AWS_certificate_manager.png)
-3. Define your variables such as certificate arn, hosted zone domain, and other desired settings in **terraform.tfvars** file 
+3. Define your variables like hosted zone domain and more desired settings in **terraform.tfvars** file 
     ```bash
     route53_hosted_zone = "yourdomain.com"
-    certificate_arn = "arn:aws:acm:"
     ```
 
     Currently containers are run on Fargate SPOT instances:
