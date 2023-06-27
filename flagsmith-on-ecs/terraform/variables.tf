@@ -29,12 +29,12 @@ variable "health_check_path" {
   default     = "/health/"
 }
 
-# ecs fargate
-
+# ECS Fargate
 
 variable "docker_image_url" {
   type        = string
   description = "Docker image to run in the ECS cluster"
+  default     = "flagsmith/flagsmith:latest"
 }
 
 variable "app_count" {
@@ -57,12 +57,13 @@ variable "log_retention_in_days" {
   default = 7
 }
 
-# specify dev/prod django settings
 variable "settings_module" {
-  type = map(string)
+  type        = string
+  description = "Application settings"
+  default     = "app.settings.production"
 }
 
-# rds
+# RDS
 variable "ssm_kms_key" {
   type        = string
   default     = "alias/aws/ssm"
@@ -93,7 +94,6 @@ variable "rds_instance_class" {
   default     = "db.t3.micro"
 }
 
-
 # domain
 
 variable "route53_hosted_zone" {
@@ -108,10 +108,14 @@ variable "django_secret_key" {
   default     = ""
 }
 
+# Fargate's  compute capacity profile
+
 variable "cpu" {
-  type = number
+  type    = number
+  default = 512
 }
 
 variable "memory" {
-  type = number
+  type    = number
+  default = 1024
 }

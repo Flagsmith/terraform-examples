@@ -2,7 +2,7 @@
 
 ## Deploying Flagsmith to AWS ECS (with whitenoise)
 
-### This is an example, how can Flagsmith can be hosted, 
+### This is an example, how Flagsmith can be hosted, 
 ### This is not production ready solution
 
 ## AWS infrastructure consists of:
@@ -35,6 +35,10 @@
 3. Define your variables like hosted zone domain and more desired settings in **terraform.tfvars** file 
     ```bash
     route53_hosted_zone = "yourdomain.com"
+    app_name            = "flagsmith"
+    app_environment     = "dev"
+    region              = "eu-central-1"
+    allowed_hosts       = "*"
     ```
 
     Currently containers are run on Fargate SPOT instances:

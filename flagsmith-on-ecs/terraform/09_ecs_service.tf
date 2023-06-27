@@ -6,7 +6,7 @@ resource "aws_ecs_task_definition" "app" {
     region           = var.region
 
     allowed_hosts   = var.allowed_hosts
-    settings_module = lookup(var.settings_module, "dev")
+    settings_module = var.settings_module
     AWS_ACCOUNT_ID  = local.AWS_ACCOUNT_ID
     app_environment = var.app_environment
     app_name        = var.app_name
