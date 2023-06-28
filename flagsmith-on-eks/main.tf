@@ -18,7 +18,6 @@ resource "helm_release" "flagsmith" {
   chart      = "flagsmith"
 
   values = [
-    file("${path.module}/../../flagsmith-values.yaml"),
-    file("${path.module}/flagsmith-values-rds.yaml")
+    file("${path.module}/flagsmith-values.yaml")
   ]
 }

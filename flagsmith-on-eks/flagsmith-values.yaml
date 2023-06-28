@@ -1,3 +1,6 @@
+influxdb2:
+  enabled: false
+
 postgresql:
   enabled: false
 
@@ -7,3 +10,9 @@ databaseExternal:
     enabled: true
     name: flagsmith-db
     key: url
+
+service:
+  frontend:
+    type: LoadBalancer
+  api:
+    type: LoadBalancer
