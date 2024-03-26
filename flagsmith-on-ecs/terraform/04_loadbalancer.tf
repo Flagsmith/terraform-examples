@@ -70,7 +70,7 @@ resource "aws_alb_listener" "ecs-alb-https-listener" {
 
 }
 # matches header with configured flagsmith subdomain
-resource "aws_alb_listener_rule" "host_header" {
+resource "aws_alb_listener_rule" "host-header" {
   listener_arn = aws_alb_listener.ecs-alb-https-listener.arn
   priority     = 10
 
