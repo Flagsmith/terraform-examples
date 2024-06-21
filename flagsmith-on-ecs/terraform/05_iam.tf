@@ -1,4 +1,4 @@
-resource "aws_iam_role" "ecs_host_role" {
+resource "aws_iam_role" "ecs-host-role" {
   name               = "${var.app_name}-ecs-host-role-${var.app_environment}"
   assume_role_policy = file("policies/ecs-task-role.json")
 }
@@ -29,15 +29,15 @@ resource "aws_iam_role_policy" "ecs-host-role-policy" {
     ]
     }
   )
-  role = aws_iam_role.ecs_host_role.id
+  role = aws_iam_role.ecs-host-role.id
 }
 
-resource "aws_iam_role" "ecs_task" {
+resource "aws_iam_role" "ecs-task" {
   name               = "${var.app_name}-ecs-task"
   assume_role_policy = file("policies/ecs-task-role.json")
 }
 
-resource "aws_iam_role_policy" "ecs_task" {
+resource "aws_iam_role_policy" "ecs-task" {
   name = "${var.app_name}-ecs-task-policy"
   policy = jsonencode({
     Version = "2012-10-17"
@@ -49,5 +49,5 @@ resource "aws_iam_role_policy" "ecs_task" {
       }
     ]
   })
-  role = aws_iam_role.ecs_task.id
+  role = aws_iam_role.ecs-task.id
 }

@@ -9,7 +9,7 @@ resource "aws_db_instance" "postgres" {
   identifier              = "${var.app_name}-postgres"
   db_name                 = var.rds_db_name
   username                = var.rds_username
-  password                = aws_ssm_parameter.db_password.value
+  password                = aws_ssm_parameter.db-password.value
   port                    = "5432"
   engine                  = "postgres"
   engine_version          = "14"
