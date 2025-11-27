@@ -1,0 +1,52 @@
+api:
+  replicacount: 4
+  secretKeyFromExistingSecret:
+    secretName: app-flagsmith
+    secretKey: flagsmith_django_secret_key
+  extraEnv:
+    ENABLE_ADMIN_ACCESS_USER_PASS: 'true'
+    USE_POSTGRES_FOR_ANALYTICS: 'true'
+  extraEnvFromSecret:
+    SENDGRID_API_KEY:
+      secretName: app-flagsmith
+      secretKey: sendgrid_api_key
+
+frontend:
+  image:
+    tag: 2.64.0
+  replicacount: 2
+  extraEnvFromSecret:
+    FLAGSMITH_ON_FLAGSMITH_API_KEY:
+      secretName: app-flagsmith
+      secretKey: flagsmith_on_flagsmith_api_key
+
+taskProcessor:
+  enabled: true
+  replicacount: 2
+  readinessProbe:
+    timeoutSeconds: 5
+  livenessProbe:
+    timeoutSeconds: 5
+
+influxdb2:
+  enabled: false
+
+postgresql:
+  enabled: false
+
+databaseExternal:
+  enabled: true
+  urlFromExistingSecret:
+    enabled: true
+
+ingress:
+  frontend:
+    enabled: true
+    ingressClassName: nginx
+    tls:
+      - secretName: ingress-cert-frontend
+  api:
+    enabled: true
+    ingressClassName: nginx
+    tls:
+      - secretName: ingress-cert-api
